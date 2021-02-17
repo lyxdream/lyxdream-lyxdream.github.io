@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>函数柯里化 和函数反柯里化 | 前端成长指引</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="icon" href="/img/favicon.ico">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="description" content="从前端基础到前端框架使用及其源码解读,再到Node.js，我们一起升级打怪，一起开启进阶之路">
+    
+    <link rel="preload" href="/assets/css/0.styles.992cb7aa.css" as="style"><link rel="preload" href="/assets/js/app.d9116c41.js" as="script"><link rel="preload" href="/assets/js/2.5ff9c18b.js" as="script"><link rel="preload" href="/assets/js/52.7eaa384b.js" as="script"><link rel="prefetch" href="/assets/js/10.e119c5b5.js"><link rel="prefetch" href="/assets/js/11.2d6eb302.js"><link rel="prefetch" href="/assets/js/12.b7f250a9.js"><link rel="prefetch" href="/assets/js/13.ea090d36.js"><link rel="prefetch" href="/assets/js/14.770d1f15.js"><link rel="prefetch" href="/assets/js/15.0102fd25.js"><link rel="prefetch" href="/assets/js/16.00c936cd.js"><link rel="prefetch" href="/assets/js/17.9a8f922d.js"><link rel="prefetch" href="/assets/js/18.48547419.js"><link rel="prefetch" href="/assets/js/19.12a80b3c.js"><link rel="prefetch" href="/assets/js/20.71da2801.js"><link rel="prefetch" href="/assets/js/21.3cd6d166.js"><link rel="prefetch" href="/assets/js/22.b1b269cc.js"><link rel="prefetch" href="/assets/js/23.f9dfe4e7.js"><link rel="prefetch" href="/assets/js/24.c4a9e598.js"><link rel="prefetch" href="/assets/js/25.0a9a2aa9.js"><link rel="prefetch" href="/assets/js/26.f9796281.js"><link rel="prefetch" href="/assets/js/27.f768258b.js"><link rel="prefetch" href="/assets/js/28.5fac5ae3.js"><link rel="prefetch" href="/assets/js/29.16027f79.js"><link rel="prefetch" href="/assets/js/3.01ef9ff4.js"><link rel="prefetch" href="/assets/js/30.1cd79dac.js"><link rel="prefetch" href="/assets/js/31.a08e839a.js"><link rel="prefetch" href="/assets/js/32.248fb4f7.js"><link rel="prefetch" href="/assets/js/33.040136f7.js"><link rel="prefetch" href="/assets/js/34.988766bb.js"><link rel="prefetch" href="/assets/js/35.b1d33db5.js"><link rel="prefetch" href="/assets/js/36.e5db7947.js"><link rel="prefetch" href="/assets/js/37.0920b9ac.js"><link rel="prefetch" href="/assets/js/38.9de446eb.js"><link rel="prefetch" href="/assets/js/39.7bc010ad.js"><link rel="prefetch" href="/assets/js/4.f6b3ada2.js"><link rel="prefetch" href="/assets/js/40.df0cbf0c.js"><link rel="prefetch" href="/assets/js/41.8deac7e2.js"><link rel="prefetch" href="/assets/js/42.72c93df4.js"><link rel="prefetch" href="/assets/js/43.376a52d4.js"><link rel="prefetch" href="/assets/js/44.0c518c79.js"><link rel="prefetch" href="/assets/js/45.29ae9140.js"><link rel="prefetch" href="/assets/js/46.d29413a8.js"><link rel="prefetch" href="/assets/js/47.7f1a9c0a.js"><link rel="prefetch" href="/assets/js/48.a912150f.js"><link rel="prefetch" href="/assets/js/49.926e4b29.js"><link rel="prefetch" href="/assets/js/5.00b5485b.js"><link rel="prefetch" href="/assets/js/50.03806c40.js"><link rel="prefetch" href="/assets/js/51.75ca94c1.js"><link rel="prefetch" href="/assets/js/53.37d00210.js"><link rel="prefetch" href="/assets/js/54.d4a6451c.js"><link rel="prefetch" href="/assets/js/55.7d8493b8.js"><link rel="prefetch" href="/assets/js/56.8b0ab707.js"><link rel="prefetch" href="/assets/js/57.8ef46fd4.js"><link rel="prefetch" href="/assets/js/6.6a825c1c.js"><link rel="prefetch" href="/assets/js/7.8691c011.js"><link rel="prefetch" href="/assets/js/8.c1b2b5d5.js"><link rel="prefetch" href="/assets/js/9.e6dee6cb.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.992cb7aa.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/home.jpg" alt="前端成长指引" class="logo"> <span class="site-name can-hide">前端成长指引</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/tool/" class="nav-link">
+  工具
+</a></div><div class="nav-item"><a href="/web/" class="nav-link router-link-active">
+  HTML+CSS+JS
+</a></div><div class="nav-item"><a href="/typescript/" class="nav-link">
+  TypeScript
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端主流框架" class="dropdown-title"><span class="title">前端主流框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端主流框架" class="mobile-dropdown-title"><span class="title">前端主流框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frame/vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/frame/react/" class="nav-link">
+  React
+</a></li></ul></div></div><div class="nav-item"><a href="/mini/" class="nav-link">
+  小程序
+</a></div><div class="nav-item"><a href="/webpack/" class="nav-link">
+  Webpack
+</a></div><div class="nav-item"><a href="/node/" class="nav-link">
+  Nodejs
+</a></div><div class="nav-item"><a href="/designPattern/" class="nav-link">
+  设计模式
+</a></div><div class="nav-item"><a href="/algorithm/" class="nav-link">
+  算法
+</a></div><div class="nav-item"><a href="/interview/" class="nav-link">
+  面试问题
+</a></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于我
+</a></div><div class="nav-item"><a href="https://github.com/lyxdream/lyxdream.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/tool/" class="nav-link">
+  工具
+</a></div><div class="nav-item"><a href="/web/" class="nav-link router-link-active">
+  HTML+CSS+JS
+</a></div><div class="nav-item"><a href="/typescript/" class="nav-link">
+  TypeScript
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端主流框架" class="dropdown-title"><span class="title">前端主流框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端主流框架" class="mobile-dropdown-title"><span class="title">前端主流框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frame/vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/frame/react/" class="nav-link">
+  React
+</a></li></ul></div></div><div class="nav-item"><a href="/mini/" class="nav-link">
+  小程序
+</a></div><div class="nav-item"><a href="/webpack/" class="nav-link">
+  Webpack
+</a></div><div class="nav-item"><a href="/node/" class="nav-link">
+  Nodejs
+</a></div><div class="nav-item"><a href="/designPattern/" class="nav-link">
+  设计模式
+</a></div><div class="nav-item"><a href="/algorithm/" class="nav-link">
+  算法
+</a></div><div class="nav-item"><a href="/interview/" class="nav-link">
+  面试问题
+</a></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于我
+</a></div><div class="nav-item"><a href="https://github.com/lyxdream/lyxdream.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/web/" aria-current="page" class="sidebar-link">目录</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>html</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>css</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>javascript</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/web/javascript/" aria-current="page" class="sidebar-link">目录</a></li><li><a href="/web/javascript/higherFunction.html" class="sidebar-link">高阶函数</a></li><li><a href="/web/javascript/currying.html" aria-current="page" class="active sidebar-link">函数柯里化 和函数反柯里化</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/web/javascript/currying.html#函数柯里化" class="sidebar-link">函数柯里化</a></li><li class="sidebar-sub-header"><a href="/web/javascript/currying.html#反柯里化" class="sidebar-link">反柯里化</a></li><li class="sidebar-sub-header"><a href="/web/javascript/currying.html#函数柯里化经典面试题" class="sidebar-link">函数柯里化经典面试题：</a></li></ul></li><li><a href="/web/javascript/typeDetection.html" class="sidebar-link">类型检测</a></li><li><a href="/web/javascript/dataConversion.html" class="sidebar-link">数据类型转换</a></li><li><a href="/web/javascript/event.html" class="sidebar-link">js中事件冒泡和事件捕获</a></li><li><a href="/web/javascript/arguments.html" class="sidebar-link">arguments</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>es6</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="函数柯里化-和函数反柯里化"><a href="#函数柯里化-和函数反柯里化" class="header-anchor">#</a> 函数柯里化 和函数反柯里化</h1> <h2 id="函数柯里化"><a href="#函数柯里化" class="header-anchor">#</a> 函数柯里化</h2> <p>柯里化的定义：柯里化是将使用多个参数的一个函数，通过拆分参数的方式，转换成一系列使用一个参数的函数。</p> <p>函数的柯里化，返回的是一个参数的函数。其实现方式是需要依赖参数以及递归，通过拆分参数的方式，来调用一个多参数的函数方法，增加可读性的目的。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code>
+<span class="token keyword">function</span> <span class="token function">isType</span><span class="token punctuation">(</span><span class="token parameter">value<span class="token punctuation">,</span> type</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">[object </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>type<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">]</span><span class="token template-punctuation string">`</span></span>
+<span class="token punctuation">}</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">isType</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">'Array'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">//true</span>
+
+<span class="token comment">//把上面的函数通过拆分参数的方式，将使用多个参数的一个函数转换成一系列使用一个参数的函数</span>
+<span class="token keyword">function</span> <span class="token function">isType</span><span class="token punctuation">(</span><span class="token parameter">type</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">[object </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>type<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">]</span><span class="token template-punctuation string">`</span></span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">let</span> isArry <span class="token operator">=</span> <span class="token function">isType</span><span class="token punctuation">(</span><span class="token string">'Array'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">isArry</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">//true</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p>柯里化的通用化实现：</p> <p>通过一个柯里化函数实现通用的柯里化方法</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">//支持多参数传递</span>
+<span class="token comment">//es6实现</span>
+<span class="token keyword">function</span> <span class="token function">isType</span><span class="token punctuation">(</span><span class="token parameter">type</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">[object </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>type<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">]</span><span class="token template-punctuation string">`</span></span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">let</span>  <span class="token function-variable function">currying</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">fn<span class="token punctuation">,</span>arr<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span><span class="token punctuation">{</span>
+    <span class="token keyword">let</span> len <span class="token operator">=</span> fn<span class="token punctuation">.</span>length<span class="token punctuation">;</span>  <span class="token comment">//这里获取的是函数参数的个数</span>
+    <span class="token comment">//  console.log(len)</span>
+    <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter"><span class="token operator">...</span>args</span><span class="token punctuation">)</span><span class="token punctuation">{</span>  <span class="token comment">//每次执行传入的参数</span>
+        <span class="token comment">//高阶函数</span>
+       <span class="token keyword">let</span>  _arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>arr<span class="token punctuation">,</span> <span class="token operator">...</span>args<span class="token punctuation">]</span> <span class="token comment">//合并上次传入的参数到arr数组</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>_arr<span class="token punctuation">.</span>length <span class="token operator">&lt;</span> len<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token function">currying</span><span class="token punctuation">(</span>fn<span class="token punctuation">,</span> _arr<span class="token punctuation">)</span> <span class="token comment">//递归不停的产生函数</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token operator">...</span>_arr<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> isArray <span class="token operator">=</span> <span class="token function">currying</span><span class="token punctuation">(</span>isType<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token string">'Array'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> isString <span class="token operator">=</span> <span class="token function">currying</span><span class="token punctuation">(</span>isType<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token string">'String'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//es5实现</span>
+<span class="token comment">// 支持多参数传递</span>
+<span class="token keyword">function</span> <span class="token function">currying</span><span class="token punctuation">(</span><span class="token parameter">fn<span class="token punctuation">,</span> args</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> args <span class="token operator">=</span> args <span class="token operator">||</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment">//用来存储所有传入的参数</span>
+    <span class="token keyword">var</span> _this <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> len <span class="token operator">=</span> fn<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> _args <span class="token operator">=</span> <span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>arguments<span class="token punctuation">)</span> <span class="token comment">//把arguments转换成数组  用来存放每次递归传过来的参数</span>
+         _args <span class="token operator">=</span> args<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span>args<span class="token punctuation">)</span>
+        <span class="token comment">// 如果参数个数小于fn.length，则递归调用，继续收集参数</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>_args<span class="token punctuation">.</span>length <span class="token operator">&lt;</span> len<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token function">currying</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>_this<span class="token punctuation">,</span> fn<span class="token punctuation">,</span> _args<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token comment">// 参数收集完毕，则执行fn</span>
+            <span class="token keyword">return</span> <span class="token function">fn</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>_this<span class="token punctuation">,</span> _args<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//ts实现</span>
+<span class="token keyword">const</span> <span class="token function-variable function">curring</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">fn<span class="token operator">:</span>Function</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span><span class="token punctuation">{</span><span class="token comment">//sum</span>
+    <span class="token keyword">const</span> <span class="token function-variable function">exec</span> <span class="token operator">=</span><span class="token punctuation">(</span><span class="token parameter">sumArgs<span class="token operator">:</span>any<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span></span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> sumArgs<span class="token punctuation">.</span>length<span class="token operator">&lt;</span>fn<span class="token punctuation">.</span>length<span class="token operator">?</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token operator">...</span>args<span class="token operator">:</span>any<span class="token punctuation">[</span><span class="token punctuation">]</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token operator">...</span>sumArgs<span class="token punctuation">,</span><span class="token operator">...</span>args<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token operator">...</span>sumArgs<span class="token punctuation">)</span>
+         
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token function">exec</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">//用于收集每次传入的参数，第一次默认是空的</span>
+<span class="token punctuation">}</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br></div></div><h2 id="反柯里化"><a href="#反柯里化" class="header-anchor">#</a> 反柯里化</h2> <ul><li>柯里化：方法的范围变小了（isType =&gt; isString/isArray） 方法的范围变小了</li> <li>反柯里化：范围变大了</li></ul> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">//   ---------分割线----------------------</span>
+<span class="token comment">/*  let toString = Object.prototype.toString;
+   console.log(toString.call(123)) 
+*/</span>
+<span class="token comment">//   ---------分割线----------------------</span>
+  <span class="token class-name">Function</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">unCurrying</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+     <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token operator">...</span>args</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span> <span class="token comment">//将所有参数组成一个数组</span>
+         <span class="token comment">/* this.call 这样调用call方法，可能并不是原型上的call方法，可能是用户自己定义的
+            防止用户自定义了call方法，这里调用原型上的call方法
+           借用原型上的call方法  apply：主要就是改变this,并且传入参数 
+           第一个call是找到call函数，第二个apply是让call执行
+           让call方法上的this变成了toString(...args),让toString执行
+           */</span>
+         <span class="token keyword">return</span> <span class="token class-name">Function</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span>args<span class="token punctuation">)</span>
+     <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">let</span> toString <span class="token operator">=</span> <span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>toString<span class="token punctuation">.</span><span class="token function">unCurrying</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">//toString原来只是原型上的，现在变成全局的了，其他原型的方法都可以通过这样变为全局的方法</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token number">123</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><h2 id="函数柯里化经典面试题"><a href="#函数柯里化经典面试题" class="header-anchor">#</a> 函数柯里化经典面试题：</h2> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">,</span> d<span class="token punctuation">,</span> e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> a <span class="token operator">+</span> b <span class="token operator">+</span> c <span class="token operator">+</span> d <span class="token operator">+</span> e
+<span class="token punctuation">}</span>
+<span class="token keyword">let</span> sum <span class="token operator">=</span> <span class="token function">currying</span><span class="token punctuation">(</span>add<span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">sum</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/web/javascript/higherFunction.html" class="prev">
+        高阶函数
+      </a></span> <span class="next"><a href="/web/javascript/typeDetection.html">
+        类型检测
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.d9116c41.js" defer></script><script src="/assets/js/2.5ff9c18b.js" defer></script><script src="/assets/js/52.7eaa384b.js" defer></script>
+  </body>
+</html>

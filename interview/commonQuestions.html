@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>es6相关的面试题 | 前端成长指引</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="icon" href="/img/favicon.ico">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="description" content="从前端基础到前端框架使用及其源码解读,再到Node.js，我们一起升级打怪，一起开启进阶之路">
+    
+    <link rel="preload" href="/assets/css/0.styles.992cb7aa.css" as="style"><link rel="preload" href="/assets/js/app.d9116c41.js" as="script"><link rel="preload" href="/assets/js/2.5ff9c18b.js" as="script"><link rel="preload" href="/assets/js/26.f9796281.js" as="script"><link rel="prefetch" href="/assets/js/10.e119c5b5.js"><link rel="prefetch" href="/assets/js/11.2d6eb302.js"><link rel="prefetch" href="/assets/js/12.b7f250a9.js"><link rel="prefetch" href="/assets/js/13.ea090d36.js"><link rel="prefetch" href="/assets/js/14.770d1f15.js"><link rel="prefetch" href="/assets/js/15.0102fd25.js"><link rel="prefetch" href="/assets/js/16.00c936cd.js"><link rel="prefetch" href="/assets/js/17.9a8f922d.js"><link rel="prefetch" href="/assets/js/18.48547419.js"><link rel="prefetch" href="/assets/js/19.12a80b3c.js"><link rel="prefetch" href="/assets/js/20.71da2801.js"><link rel="prefetch" href="/assets/js/21.3cd6d166.js"><link rel="prefetch" href="/assets/js/22.b1b269cc.js"><link rel="prefetch" href="/assets/js/23.f9dfe4e7.js"><link rel="prefetch" href="/assets/js/24.c4a9e598.js"><link rel="prefetch" href="/assets/js/25.0a9a2aa9.js"><link rel="prefetch" href="/assets/js/27.f768258b.js"><link rel="prefetch" href="/assets/js/28.5fac5ae3.js"><link rel="prefetch" href="/assets/js/29.16027f79.js"><link rel="prefetch" href="/assets/js/3.01ef9ff4.js"><link rel="prefetch" href="/assets/js/30.1cd79dac.js"><link rel="prefetch" href="/assets/js/31.a08e839a.js"><link rel="prefetch" href="/assets/js/32.248fb4f7.js"><link rel="prefetch" href="/assets/js/33.040136f7.js"><link rel="prefetch" href="/assets/js/34.988766bb.js"><link rel="prefetch" href="/assets/js/35.b1d33db5.js"><link rel="prefetch" href="/assets/js/36.e5db7947.js"><link rel="prefetch" href="/assets/js/37.0920b9ac.js"><link rel="prefetch" href="/assets/js/38.9de446eb.js"><link rel="prefetch" href="/assets/js/39.7bc010ad.js"><link rel="prefetch" href="/assets/js/4.f6b3ada2.js"><link rel="prefetch" href="/assets/js/40.df0cbf0c.js"><link rel="prefetch" href="/assets/js/41.8deac7e2.js"><link rel="prefetch" href="/assets/js/42.72c93df4.js"><link rel="prefetch" href="/assets/js/43.376a52d4.js"><link rel="prefetch" href="/assets/js/44.0c518c79.js"><link rel="prefetch" href="/assets/js/45.29ae9140.js"><link rel="prefetch" href="/assets/js/46.d29413a8.js"><link rel="prefetch" href="/assets/js/47.7f1a9c0a.js"><link rel="prefetch" href="/assets/js/48.a912150f.js"><link rel="prefetch" href="/assets/js/49.926e4b29.js"><link rel="prefetch" href="/assets/js/5.00b5485b.js"><link rel="prefetch" href="/assets/js/50.03806c40.js"><link rel="prefetch" href="/assets/js/51.75ca94c1.js"><link rel="prefetch" href="/assets/js/52.7eaa384b.js"><link rel="prefetch" href="/assets/js/53.37d00210.js"><link rel="prefetch" href="/assets/js/54.d4a6451c.js"><link rel="prefetch" href="/assets/js/55.7d8493b8.js"><link rel="prefetch" href="/assets/js/56.8b0ab707.js"><link rel="prefetch" href="/assets/js/57.8ef46fd4.js"><link rel="prefetch" href="/assets/js/6.6a825c1c.js"><link rel="prefetch" href="/assets/js/7.8691c011.js"><link rel="prefetch" href="/assets/js/8.c1b2b5d5.js"><link rel="prefetch" href="/assets/js/9.e6dee6cb.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.992cb7aa.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/home.jpg" alt="前端成长指引" class="logo"> <span class="site-name can-hide">前端成长指引</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/tool/" class="nav-link">
+  工具
+</a></div><div class="nav-item"><a href="/web/" class="nav-link">
+  HTML+CSS+JS
+</a></div><div class="nav-item"><a href="/typescript/" class="nav-link">
+  TypeScript
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端主流框架" class="dropdown-title"><span class="title">前端主流框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端主流框架" class="mobile-dropdown-title"><span class="title">前端主流框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frame/vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/frame/react/" class="nav-link">
+  React
+</a></li></ul></div></div><div class="nav-item"><a href="/mini/" class="nav-link">
+  小程序
+</a></div><div class="nav-item"><a href="/webpack/" class="nav-link">
+  Webpack
+</a></div><div class="nav-item"><a href="/node/" class="nav-link">
+  Nodejs
+</a></div><div class="nav-item"><a href="/designPattern/" class="nav-link">
+  设计模式
+</a></div><div class="nav-item"><a href="/algorithm/" class="nav-link">
+  算法
+</a></div><div class="nav-item"><a href="/interview/" class="nav-link router-link-active">
+  面试问题
+</a></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于我
+</a></div><div class="nav-item"><a href="https://github.com/lyxdream/lyxdream.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/tool/" class="nav-link">
+  工具
+</a></div><div class="nav-item"><a href="/web/" class="nav-link">
+  HTML+CSS+JS
+</a></div><div class="nav-item"><a href="/typescript/" class="nav-link">
+  TypeScript
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端主流框架" class="dropdown-title"><span class="title">前端主流框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端主流框架" class="mobile-dropdown-title"><span class="title">前端主流框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frame/vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/frame/react/" class="nav-link">
+  React
+</a></li></ul></div></div><div class="nav-item"><a href="/mini/" class="nav-link">
+  小程序
+</a></div><div class="nav-item"><a href="/webpack/" class="nav-link">
+  Webpack
+</a></div><div class="nav-item"><a href="/node/" class="nav-link">
+  Nodejs
+</a></div><div class="nav-item"><a href="/designPattern/" class="nav-link">
+  设计模式
+</a></div><div class="nav-item"><a href="/algorithm/" class="nav-link">
+  算法
+</a></div><div class="nav-item"><a href="/interview/" class="nav-link router-link-active">
+  面试问题
+</a></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于我
+</a></div><div class="nav-item"><a href="https://github.com/lyxdream/lyxdream.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/interview/" aria-current="page" class="sidebar-link">目录</a></li><li><a href="/interview/dataTypeConversion.html" class="sidebar-link">数据类型转换</a></li><li><a href="/interview/eventRing.html" class="sidebar-link">浏览器事件环</a></li><li><a href="/interview/commonQuestions.html" aria-current="page" class="active sidebar-link">常见面试题</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/interview/commonQuestions.html#es6相关的面试题" class="sidebar-link">es6相关的面试题</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/interview/commonQuestions.html#_1、如何自己实现一个类模版字符串的功能" class="sidebar-link">1、如何自己实现一个类模版字符串的功能</a></li><li class="sidebar-sub-header"><a href="/interview/commonQuestions.html#_2、带标签的模版字符串" class="sidebar-link">2、带标签的模版字符串</a></li><li class="sidebar-sub-header"><a href="/interview/commonQuestions.html#_3、高阶函数" class="sidebar-link">3、高阶函数</a></li><li class="sidebar-sub-header"><a href="/interview/commonQuestions.html#_4、箭头函数" class="sidebar-link">4、箭头函数</a></li><li class="sidebar-sub-header"><a href="/interview/commonQuestions.html#_5、this指向问题面试题" class="sidebar-link">5、this指向问题面试题：</a></li></ul></li></ul></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="es6相关的面试题"><a href="#es6相关的面试题" class="header-anchor">#</a> es6相关的面试题</h2> <h3 id="_1、如何自己实现一个类模版字符串的功能"><a href="#_1、如何自己实现一个类模版字符串的功能" class="header-anchor">#</a> 1、如何自己实现一个类模版字符串的功能</h3> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// 如何自己实现一个类模版字符串的功能</span>
+<span class="token keyword">let</span> name <span class="token operator">=</span> <span class="token string">'yx'</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> age <span class="token operator">=</span> <span class="token number">9</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> str <span class="token operator">=</span> <span class="token string">'hello${name}今年${age}了'</span>
+
+<span class="token comment">// replace 第二个参数，必需。一个字符串值。规定了替换文本或生成替换文本的函数。</span>
+<span class="token comment">// eval(string) string:必需。要计算的字符串，其中含有要计算的 JavaScript 表达式或要执行的语句。</span>
+str <span class="token operator">=</span> str<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\$\{([^}]*)\}</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">,</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arguments<span class="token punctuation">)</span>
+    <span class="token comment">// eval('name')   eval('age')</span>
+    <span class="token keyword">return</span> <span class="token function">eval</span><span class="token punctuation">(</span>arguments<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span>
+
+<span class="token comment">//[Arguments] {</span>
+<span class="token comment">//     '0': '${name}',</span>
+<span class="token comment">//     '1': 'name',</span>
+<span class="token comment">//     '2': 5,</span>
+<span class="token comment">//     '3': 'hello${name}今年${age}了'</span>
+<span class="token comment">//   }</span>
+<span class="token comment">//   [Arguments] {</span>
+<span class="token comment">//     '0': '${age}',</span>
+<span class="token comment">//     '1': 'age',</span>
+<span class="token comment">//     '2': 14,</span>
+<span class="token comment">//     '3': 'hello${name}今年${age}了'</span>
+<span class="token comment">//   }</span>
+<span class="token comment">//   helloyx今年9了</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br></div></div><h3 id="_2、带标签的模版字符串"><a href="#_2、带标签的模版字符串" class="header-anchor">#</a> 2、带标签的模版字符串</h3> <p>实现功能：给所有模版字符串中变量加上*号</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>let name = 'yx';
+let age = 9;
+function tagFn(){  //第一个参数是字符串的数组，第二个参数是第一个变量，第三个是第三个变量
+    console.log(arguments);  //[Arguments] { '0': [ 'hello', '’今年', '了' ], '1': 'yx', '2': 9 }
+    let strings = arguments[0];
+    let values = [].slice.call(arguments,1);    //如果想把第一个参数除外的剩余的参数转换成数组 //把arguments转换成一个真正的数组，从arguments第一位之后项开始
+    console.log(strings,values)  // 'hello', '’今年', '了' ] [ 'yx', 9 ]
+    let str = &quot;&quot;;
+    for(let i=0;i&lt;values.length;i++){
+        str+= `${strings[i]}*${values[i]}*`
+    }
+    str +=strings[strings.length-1];
+    return str;
+    // return 100
+}
+let str = tagFn`hello${name}今年${age}岁了`
+//标签（函数）返回什么，结果就是什么
+console.log(str)
+//hello*yx*今年*9*岁了
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><p>如果想把第一个参数除外的剩余的参数转换成数组</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>//...叫剩运算符 就是把多余的都放到一个数组中
+let fn = (x,...arrgs)=&gt;{
+    console.log(arrgs)
+}
+fn('x',1,2,3,4,5)
+
+//[ 1, 2, 3, 4, 5 ]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h3 id="_3、高阶函数"><a href="#_3、高阶函数" class="header-anchor">#</a> 3、高阶函数</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>function a(c){
+    return function(d){
+        return {sum:c+d}
+    }
+}
+或者：
+let a = c =&gt;d =&gt;({sum:c+d})
+console.log(a(1)(2))
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h3 id="_4、箭头函数"><a href="#_4、箭头函数" class="header-anchor">#</a> 4、箭头函数</h3> <p>箭头函数 箭头函数中没有this 会向上查找</p> <p>箭头函数特点：</p> <blockquote><p>1、箭头函数没有function关键字</p></blockquote> <blockquote><p>2、小括号和大括号之间有个箭头</p></blockquote> <blockquote><p>3、如果参数是一个，可以省略小括号</p></blockquote> <blockquote><p>4、如果没有return 可以不写大括号</p></blockquote> <blockquote><p>5、如果直接返回的是对象，需要小括号包裹</p></blockquote> <blockquote><p>6、 箭头函数中没有arguments</p></blockquote> <blockquote><p>7、函数可以赋予默认参数</p></blockquote> <p>解决this指向问题：前面是谁就是谁</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>let obj = {
+        b:1,
+        a:function(){
+            let that = this;
+            setTimeout(()=&gt;{
+                console.log(that)
+            },1000)
+        }
+    }
+    obj.a()  //this指向obj
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><div class="language- line-numbers-mode"><pre class="language-text"><code>let obj = {
+        b:1,
+        a:()=&gt;{
+            setTimeout(()=&gt;{
+                console.log(this)
+            },1000)
+        }
+    }
+   obj.a()  //this指向window
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><h3 id="_5、this指向问题面试题"><a href="#_5、this指向问题面试题" class="header-anchor">#</a> 5、this指向问题面试题：</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>let a =1;
+let obj = {
+    a:2,
+    b:()=&gt;{
+        console.log(a)
+    }
+}
+obj.b()   //1
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><div class="language- line-numbers-mode"><pre class="language-text"><code>let a =1;
+let obj = {
+    a:2,
+    b:()=&gt;{
+        console.log(this.a)
+    }
+}
+obj.b()  //undefined
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><div class="language- line-numbers-mode"><pre class="language-text"><code>var a =1;
+let obj = {
+    a:2,
+    b:()=&gt;{
+        console.log(this.a)
+    }
+}
+obj.b()  //1
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>函数可以赋予默认参数</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>let fn = (a=1,b=2)=&gt;{
+    console.log(a,b)
+}
+fn();
+//1 2
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/interview/eventRing.html" class="prev">
+        浏览器事件环
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.d9116c41.js" defer></script><script src="/assets/js/2.5ff9c18b.js" defer></script><script src="/assets/js/26.f9796281.js" defer></script>
+  </body>
+</html>

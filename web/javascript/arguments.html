@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>前端成长指引</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="icon" href="/img/favicon.ico">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="description" content="从前端基础到前端框架使用及其源码解读,再到Node.js，我们一起升级打怪，一起开启进阶之路">
+    
+    <link rel="preload" href="/assets/css/0.styles.992cb7aa.css" as="style"><link rel="preload" href="/assets/js/app.d9116c41.js" as="script"><link rel="preload" href="/assets/js/2.5ff9c18b.js" as="script"><link rel="preload" href="/assets/js/51.75ca94c1.js" as="script"><link rel="prefetch" href="/assets/js/10.e119c5b5.js"><link rel="prefetch" href="/assets/js/11.2d6eb302.js"><link rel="prefetch" href="/assets/js/12.b7f250a9.js"><link rel="prefetch" href="/assets/js/13.ea090d36.js"><link rel="prefetch" href="/assets/js/14.770d1f15.js"><link rel="prefetch" href="/assets/js/15.0102fd25.js"><link rel="prefetch" href="/assets/js/16.00c936cd.js"><link rel="prefetch" href="/assets/js/17.9a8f922d.js"><link rel="prefetch" href="/assets/js/18.48547419.js"><link rel="prefetch" href="/assets/js/19.12a80b3c.js"><link rel="prefetch" href="/assets/js/20.71da2801.js"><link rel="prefetch" href="/assets/js/21.3cd6d166.js"><link rel="prefetch" href="/assets/js/22.b1b269cc.js"><link rel="prefetch" href="/assets/js/23.f9dfe4e7.js"><link rel="prefetch" href="/assets/js/24.c4a9e598.js"><link rel="prefetch" href="/assets/js/25.0a9a2aa9.js"><link rel="prefetch" href="/assets/js/26.f9796281.js"><link rel="prefetch" href="/assets/js/27.f768258b.js"><link rel="prefetch" href="/assets/js/28.5fac5ae3.js"><link rel="prefetch" href="/assets/js/29.16027f79.js"><link rel="prefetch" href="/assets/js/3.01ef9ff4.js"><link rel="prefetch" href="/assets/js/30.1cd79dac.js"><link rel="prefetch" href="/assets/js/31.a08e839a.js"><link rel="prefetch" href="/assets/js/32.248fb4f7.js"><link rel="prefetch" href="/assets/js/33.040136f7.js"><link rel="prefetch" href="/assets/js/34.988766bb.js"><link rel="prefetch" href="/assets/js/35.b1d33db5.js"><link rel="prefetch" href="/assets/js/36.e5db7947.js"><link rel="prefetch" href="/assets/js/37.0920b9ac.js"><link rel="prefetch" href="/assets/js/38.9de446eb.js"><link rel="prefetch" href="/assets/js/39.7bc010ad.js"><link rel="prefetch" href="/assets/js/4.f6b3ada2.js"><link rel="prefetch" href="/assets/js/40.df0cbf0c.js"><link rel="prefetch" href="/assets/js/41.8deac7e2.js"><link rel="prefetch" href="/assets/js/42.72c93df4.js"><link rel="prefetch" href="/assets/js/43.376a52d4.js"><link rel="prefetch" href="/assets/js/44.0c518c79.js"><link rel="prefetch" href="/assets/js/45.29ae9140.js"><link rel="prefetch" href="/assets/js/46.d29413a8.js"><link rel="prefetch" href="/assets/js/47.7f1a9c0a.js"><link rel="prefetch" href="/assets/js/48.a912150f.js"><link rel="prefetch" href="/assets/js/49.926e4b29.js"><link rel="prefetch" href="/assets/js/5.00b5485b.js"><link rel="prefetch" href="/assets/js/50.03806c40.js"><link rel="prefetch" href="/assets/js/52.7eaa384b.js"><link rel="prefetch" href="/assets/js/53.37d00210.js"><link rel="prefetch" href="/assets/js/54.d4a6451c.js"><link rel="prefetch" href="/assets/js/55.7d8493b8.js"><link rel="prefetch" href="/assets/js/56.8b0ab707.js"><link rel="prefetch" href="/assets/js/57.8ef46fd4.js"><link rel="prefetch" href="/assets/js/6.6a825c1c.js"><link rel="prefetch" href="/assets/js/7.8691c011.js"><link rel="prefetch" href="/assets/js/8.c1b2b5d5.js"><link rel="prefetch" href="/assets/js/9.e6dee6cb.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.992cb7aa.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/home.jpg" alt="前端成长指引" class="logo"> <span class="site-name can-hide">前端成长指引</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/tool/" class="nav-link">
+  工具
+</a></div><div class="nav-item"><a href="/web/" class="nav-link router-link-active">
+  HTML+CSS+JS
+</a></div><div class="nav-item"><a href="/typescript/" class="nav-link">
+  TypeScript
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端主流框架" class="dropdown-title"><span class="title">前端主流框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端主流框架" class="mobile-dropdown-title"><span class="title">前端主流框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frame/vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/frame/react/" class="nav-link">
+  React
+</a></li></ul></div></div><div class="nav-item"><a href="/mini/" class="nav-link">
+  小程序
+</a></div><div class="nav-item"><a href="/webpack/" class="nav-link">
+  Webpack
+</a></div><div class="nav-item"><a href="/node/" class="nav-link">
+  Nodejs
+</a></div><div class="nav-item"><a href="/designPattern/" class="nav-link">
+  设计模式
+</a></div><div class="nav-item"><a href="/algorithm/" class="nav-link">
+  算法
+</a></div><div class="nav-item"><a href="/interview/" class="nav-link">
+  面试问题
+</a></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于我
+</a></div><div class="nav-item"><a href="https://github.com/lyxdream/lyxdream.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/tool/" class="nav-link">
+  工具
+</a></div><div class="nav-item"><a href="/web/" class="nav-link router-link-active">
+  HTML+CSS+JS
+</a></div><div class="nav-item"><a href="/typescript/" class="nav-link">
+  TypeScript
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端主流框架" class="dropdown-title"><span class="title">前端主流框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端主流框架" class="mobile-dropdown-title"><span class="title">前端主流框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frame/vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/frame/react/" class="nav-link">
+  React
+</a></li></ul></div></div><div class="nav-item"><a href="/mini/" class="nav-link">
+  小程序
+</a></div><div class="nav-item"><a href="/webpack/" class="nav-link">
+  Webpack
+</a></div><div class="nav-item"><a href="/node/" class="nav-link">
+  Nodejs
+</a></div><div class="nav-item"><a href="/designPattern/" class="nav-link">
+  设计模式
+</a></div><div class="nav-item"><a href="/algorithm/" class="nav-link">
+  算法
+</a></div><div class="nav-item"><a href="/interview/" class="nav-link">
+  面试问题
+</a></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于我
+</a></div><div class="nav-item"><a href="https://github.com/lyxdream/lyxdream.github.io" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/web/" aria-current="page" class="sidebar-link">目录</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>html</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>css</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>javascript</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/web/javascript/" aria-current="page" class="sidebar-link">目录</a></li><li><a href="/web/javascript/higherFunction.html" class="sidebar-link">高阶函数</a></li><li><a href="/web/javascript/currying.html" class="sidebar-link">函数柯里化 和函数反柯里化</a></li><li><a href="/web/javascript/typeDetection.html" class="sidebar-link">类型检测</a></li><li><a href="/web/javascript/dataConversion.html" class="sidebar-link">数据类型转换</a></li><li><a href="/web/javascript/event.html" class="sidebar-link">js中事件冒泡和事件捕获</a></li><li><a href="/web/javascript/arguments.html" aria-current="page" class="active sidebar-link">arguments</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>es6</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><p>arguments的介绍：</p> <ul><li>（1）arguments是javascript的一个内置对象，存储的是函数的参数，是一个伪数组，类似Array，但除了length属性和索引元素之外没有任何数组属性，例如，它没有push方法，但是可以转换为一个真正的数组；</li></ul> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">var</span> arr<span class="token operator">=</span><span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>arguments<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>（2）arguments对象的长度是由实参个数决定而不是形参；</li></ul> <p>形参和实参：</p> <p>形参：函数定义时，函数后面的参数，不能用var修饰。</p> <p>实参：函数调用时，函数后面的参数。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">var</span> sum<span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span>b</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+sum<span class="token operator">=</span>a<span class="token operator">+</span>b<span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>sum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>上述的实例中：a,b是新参。函数调用时传进去的参数（1,2）是实参；</p> <blockquote><p>形参是函数内部重新开辟内存空间存储的变量，但是其与arguments对象内存空间并不重叠。对于arguments的值都存在的情况下，两者值是同步的，但是针对其中一个无值的情况下，对于此无值的情形值不会得以同步。</p></blockquote> <ul><li><p>（3）arguments.callee返回arguments对象所在的当前函数引用。（递归调用时推荐使用arguments.callee代替函数本身）</p></li> <li><p>（4）arguments参数可以传递多个，与函数的定义无关；</p></li></ul> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">function</span>  <span class="token function">test</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span>y</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>arguments<span class="token punctuation">.</span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+     <span class="token function">alert</span><span class="token punctuation">(</span>arguments<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   
+   <span class="token punctuation">}</span>    
+ <span class="token punctuation">}</span>
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><blockquote><p>ECMAScript中的参数的内部是用一个数组来表示的，函数接收到的始终是这个数组，而不关系数组中包含哪些参数，因此不介意传进来多少参数。</p></blockquote> <ul><li><p>（5）使用arguments对象可以判断实参的个数</p> <p>arguments.length();   实参的个数</p> <p>arguments[i]        访问第i个参数</p></li></ul> <p>向一个函数传入不定数量的数值求和。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">addSum</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">var</span> sum<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>arguments<span class="token punctuation">.</span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        sum<span class="token operator">+=</span>arguments<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>sum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token function">addSum</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">//15</span>
+<span class="token function">addSum</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">//5</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/web/javascript/event.html" class="prev">
+        js中事件冒泡和事件捕获
+      </a></span> <span class="next"><a href="/web/es6/">
+        目录
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.d9116c41.js" defer></script><script src="/assets/js/2.5ff9c18b.js" defer></script><script src="/assets/js/51.75ca94c1.js" defer></script>
+  </body>
+</html>
